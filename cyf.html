@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>七夕快乐 - 陈依菲</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a0229 0%, #2c0345 50%, #4a0770 100%);
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .heart-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            margin-bottom: 30px;
+        }
+        
+        .heart {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            background-color: #ff2e63;
+            transform: rotate(45deg);
+            box-shadow: 0 0 60px #ff2e63, 0 0 140px #ff2e63;
+            animation: heartbeat 1.6s infinite;
+            cursor: pointer;
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background-color: #ff2e63;
+            border-radius: 50%;
+        }
+        
+        .heart:before {
+            top: -80px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -80px;
+        }
+        
+        @keyframes heartbeat {
+            0%, 50%, 100% { transform: rotate(45deg) scale(1); }
+            30%, 80% { transform: rotate(45deg) scale(1.1); }
+        }
+        
+        .message {
+            text-align: center;
+            z-index: 3;
+            max-width: 80%;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 46, 99, 0.8);
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeIn 2s forwards 2s;
+        }
+        
+        .special {
+            color: #ffeb3b;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: #ff2e63;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .instructions {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            z-index: 5;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .music-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            cursor: pointer;
+        }
+        
+        .music-btn i {
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="stars" id="stars"></div>
+        <div class="particles" id="particles"></div>
+        
+        <div class="heart-container">
+            <div class="heart" id="heart"></div>
+        </div>
+        
+        <div class="message">
+            <h1>七夕快乐，陈依菲！</h1>
+            <p>在这浪漫的星空下，我想对你说：</p>
+            <p>你是我生命中最美的<span class="special">奇迹</span>，</p>
+            <p>如同这星空中的<span class="special">最亮星辰</span>。</p>
+            <p>愿我们的爱情如星河般<span class="special">永恒璀璨</span>！</p>
+        </div>
+        
+        <div class="instructions">
+            触摸心形会有惊喜哦 ❤️
+        </div>
+        
+        <div class="music-btn" id="musicBtn">
+            <i class="fas fa-music"></i>
+        </div>
+        
+        <audio id="bgMusic" loop>
+            <source src="https://assets.mixkit.co/music/preview/mixkit-spirit-of-the-east-528.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建星星
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                starsContainer.appendChild(star);
+            }
+            
+            // 心形点击效果
+            const heart = document.getElementById('heart');
+            const particlesContainer = document.getElementById('particles');
+            
+            heart.addEventListener('click', function(e) {
+                createParticles(e, 30);
+            });
+            
+            // 触摸移动效果
+            document.addEventListener('touchmove', function(e) {
+                if (e.touches) {
+                    for (let i = 0; i < e.touches.length; i++) {
+                        createParticles(e.touches[i], 3);
+                    }
+                }
+            });
+            
+            // 鼠标移动效果（用于测试）
+            document.addEventListener('mousemove', function(e) {
+                createParticles(e, 2);
+            });
+            
+            function createParticles(e, count) {
+                for (let i = 0; i < count; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    const size = Math.random() * 10 + 5;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    
+                    const x = e.clientX || e.touches[0].clientX;
+                    const y = e.clientY || e.touches[0].clientY;
+                    
+                    particle.style.left = (x - size/2) + 'px';
+                    particle.style.top = (y - size/2) + 'px';
+                    
+                    const colorVal = Math.random();
+                    if (colorVal < 0.3) {
+                        particle.style.backgroundColor = '#ff2e63'; // 粉色
+                    } else if (colorVal < 0.6) {
+                        particle.style.backgroundColor = '#ffeb3b'; // 黄色
+                    } else {
+                        particle.style.backgroundColor = '#4a0770'; // 紫色
+                    }
+                    
+                    particlesContainer.appendChild(particle);
+                    
+                    // 粒子动画
+                    const anim = particle.animate([
+                        { 
+                            transform: 'translate(0, 0) scale(1)',
+                            opacity: 1
+                        },
+                        { 
+                            transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(0)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: Math.random() * 1000 + 500,
+                        easing: 'cubic-bezier(0.250, 0.460, 0.450, 0.940)'
+                    });
+                    
+                    anim.onfinish = () => {
+                        particle.remove();
+                    };
+                }
+            }
+            
+            // 背景音乐控制
+            const musicBtn = document.getElementById('musicBtn');
+            const bgMusic = document.getElementById('bgMusic');
+            let musicPlaying = false;
+            
+            musicBtn.addEventListener('click', function() {
+                if (musicPlaying) {
+                    bgMusic.pause();
+                    musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+                } else {
+                    bgMusic.play();
+                    musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                musicPlaying = !musicPlaying;
+            });
+            
+            // 自动播放音乐（需要用户交互）
+            document.body.addEventListener('click', function() {
+                if (!musicPlaying) {
+                    bgMusic.play().then(() => {
+                        musicPlaying = true;
+                        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    }).catch(err => {
+                        console.log('自动播放受阻，需要用户交互');
+                    });
+                }
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
