@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>七夕快乐 - 陈依菲</title>
+    <title>七夕快乐 - 宝宝</title>
     <style>
         * {
             margin: 0;
@@ -36,7 +36,7 @@
         }
         
         .stars {
-            position: absolute;
+            位置: 绝对;
             top: 0;
             left: 0;
             width: 100%;
@@ -45,7 +45,7 @@
         }
         
         .star {
-            position: absolute;
+            位置: 绝对;
             background-color: #fff;
             border-radius: 50%;
             animation: twinkle 4s infinite ease-in-out;
@@ -70,7 +70,7 @@
         .heart {
             position: relative;
             width: 160px;
-            height: 160px;
+            高度: 160像素;
             background-color: #ff2e63;
             transform: rotate(45deg);
             box-shadow: 0 0 60px #ff2e63, 0 0 140px #ff2e63;
@@ -78,9 +78,9 @@
             cursor: pointer;
         }
         
-        .heart:before,
-        .heart:after {
-            content: '';
+        .心:之前,
+        .心:之后 {
+            内容: '';
             position: absolute;
             width: 160px;
             height: 160px;
@@ -154,8 +154,8 @@
         }
         
         .instructions {
-            position: absolute;
-            bottom: 20px;
+            位置: 绝对;
+            底部: 20像素;
             text-align: center;
             font-size: 0.9rem;
             opacity: 0.7;
@@ -200,7 +200,7 @@
         </div>
         
         <div class="message">
-            <h1>七夕快乐，陈依菲！</h1>
+            <h1>七夕快乐，宝宝！</h1>
             <p>在这浪漫的星空下，我想对你说：</p>
             <p>你是我生命中最美的<span class="special">奇迹</span>，</p>
             <p>如同这星空中的<span class="special">最亮星辰</span>。</p>
@@ -264,17 +264,17 @@
                     
                     const size = Math.random() * 10 + 5;
                     particle.style.width = size + 'px';
-                    particle.style.height = size + 'px';
+                    粒子.样式.高度 = 尺寸 + 'px';
                     
                     const x = e.clientX || e.touches[0].clientX;
-                    const y = e.clientY || e.touches[0].clientY;
+                    consty=e.clientY||touches[0];
                     
-                    particle.style.left = (x - size/2) + 'px';
-                    particle.style.top = (y - size/2) + 'px';
+                    粒子.样式.左 = (x - 尺寸/2) + 'px';
+                    粒子.样式.顶部 = (y - 尺寸/2) + '像素';
                     
-                    const colorVal = Math.random();
-                    if (colorVal < 0.3) {
-                        particle.style.backgroundColor = '#ff2e63'; // 粉色
+                    const 颜色值 = Math.随机();
+                    如果 (colorVal < 0.3) {
+                        粒子.样式.backgroundColor = '#ff2e63'; // 粉色
                     } else if (colorVal < 0.6) {
                         particle.style.backgroundColor = '#ffeb3b'; // 黄色
                     } else {
@@ -290,16 +290,16 @@
                             opacity: 1
                         },
                         { 
-                            transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(0)`,
-                            opacity: 0
+                            变换: `translate(${Math.random() * 100 - 50}px,${Math.random() * 100 - 50}px) 放大(0)`,
+                            透明度: 0
                         }
                     ], {
-                        duration: Math.random() * 1000 + 500,
-                        easing: 'cubic-bezier(0.250, 0.460, 0.450, 0.940)'
+                        持续时间: Math.random() * 1000 + 500,
+                        缓动: 'cubic-bezier(0.250, 0.460, 0.450, 0.940)'
                     });
                     
-                    anim.onfinish = () => {
-                        particle.remove();
+                    动画.onfinish = () => {
+                        粒子.移除();
                     };
                 }
             }
@@ -310,9 +310,9 @@
             let musicPlaying = false;
             
             musicBtn.addEventListener('click', function() {
-                if (musicPlaying) {
-                    bgMusic.pause();
-                    musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+                如果 (音乐播放中) {
+                    背景音乐.暂停();
+                    音乐按钮.innerHTML = '<i class="fas fa-music"></i>';
                 } else {
                     bgMusic.play();
                     musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
